@@ -1,51 +1,165 @@
-# quarkus-api
+# 📋 Proyecto Quarkus - Validador de Sudoku y Secuencia de Fibonacci
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## 🎯 Descripción General
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Este proyecto implementa dos funcionalidades principales en **Quarkus** siguiendo los **principios SOLID**:
 
-## Running the application in dev mode
+1. **🧩 Validador de Sudoku**: Valida tableros de Sudoku 9x9 según las reglas estándar
+2. **🔢 Generador de Fibonacci**: Genera secuencias de Fibonacci con números iniciales personalizables
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
+## 🏗️ Arquitectura y Principios SOLID Aplicados
+
+
+## 📂 Estructura del Proyecto
+
+```
+quarkus-api/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/beesion/ms/test/
+│   │           └── resource/                    # 🆕 NUEVAS CLASES
+│   │               ├── SudokuValidatorResource.java  # ✅ Validador de Sudoku
+│   │               └── FibonacciResource.java        # ✅ Generador de Fibonacci
+│   └── test/
+│       └── java/
+│           └── com/beesion/ms/test/
+│               └── resource/                    # 🆕 TESTS
+│                   └── SolutionTest.java        # ✅ Tests unitarios
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
-## Packaging and running the application
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+### 📊 Ejemplos de Uso
+```java
+// 🔄 Fibonacci clásico
+fibonacci([0, 1], 9) → [0, 1, 1, 2, 3, 5, 8, 13, 21]
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+// 🎲 Fibonacci con números iniciales diferentes
+fibonacci([2, 3], 5) → [2, 3, 5, 8, 13]
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Dnative
+// 🔸 Casos especiales
+fibonacci([0, 1], 0) → []           // Lista vacía
+fibonacci([5, 7], 1) → [5]          // Solo primer número
+fibonacci([10, 20], 2) → [10, 20]   // Solo números iniciales
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+## 🧪 Tests Unitarios
+
+### 📈 Cobertura de Tests
+
+El proyecto incluye **13 tests exhaustivos** que cubren:
+
+#### 🧩 Validador de Sudoku
+- ✅ **Tablero válido** (Ejemplo 1 del documento)
+- ✅ **Tablero inválido** (Ejemplo 2 del documento)
+- ✅ **Tablero nulo**
+- ✅ **Dimensiones incorrectas**
+- ✅ **Números repetidos** en columnas
+
+#### 🔢 Generador de Fibonacci
+- ✅ **Secuencia clásica** [0,1] con n=9
+- ✅ **Secuencia personalizada** [2,3] con n=5
+- ✅ **Casos especiales** (n=0, n=1, n=2)
+- ✅ **Validación de parámetros** inválidos
+- ✅ **Manejo de excepciones**
+
+```
+🔢 PROBANDO FIBONACCI EJEMPLO 1:
+📥 Entrada: números iniciales = [0, 1], n = 9
+📤 Resultado: [0, 1, 1, 2, 3, 5, 8, 13, 21]
+✅ Esperado:  [0, 1, 1, 2, 3, 5, 8, 13, 21]
+🎯 Match: SÍ
 ```
 
-You can then execute your native executable with: `./target/quarkus-api-1.0.0-SNAPSHOT-runner`
+## 🛠️ Instalación y Ejecución
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+### 📋 Prerrequisitos
+- ☕ **Java 17** o superior
+- 📦 **Maven 3.8+**
+- ⚡ **Quarkus CLI** (opcional)
 
-## Related Guides
+### 🚀 Comandos de Ejecución
+
+#### Ejecutar en modo desarrollo
+```bash
+./mvnw quarkus:dev
+```
+
+#### Compilar proyecto
+```bash
+./mvnw clean compile
+```
+
+#### Ejecutar tests
+```bash
+./mvnw test
+```
+
+#### Compilar y empaquetar
+```bash
+./mvnw clean package
+java -jar target/quarkus-app/quarkus-run.jar
+```
+
+## 📸 Evidencia de Funcionamiento
+
+### ✅ Compilación y Tests Exitosos
+
+![Evidencia de Tests Funcionando](https://github.com/gjagomez/SUDOKU/blob/main/Img/1.png)
+
+
+## 🔧 Configuración del Proyecto
+
+### 📄 `pom.xml` - Dependencias Clave
+```xml
+<dependencies>
+    <!-- Quarkus Core -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+    </dependency>
+    
+    <!-- Testing -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-junit5</artifactId>
+        <scope>test</scope>
+    </dependency>
+    
+    <!-- JAX-RS -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy-reactive</artifactId>
+    </dependency>
+</dependencies>
+```
+
+### ⚙️ `application.properties`
+```properties
+# Puerto de la aplicación
+quarkus.http.port=8080
+
+# Configuración de logs
+quarkus.log.level=INFO
+quarkus.log.category."com.beesion.ms.test".level=DEBUG
+
+# Configuración de desarrollo
+%dev.quarkus.http.port=8080
+%dev.quarkus.log.console.enable=true
+```
+
+
+
+### 🔢 Probar Generador de Fibonacci
+```bash
+# Fibonacci clásico
+curl -X POST http://localhost:8080/fibonacci/generate \
+  -H "Content-Type: application/json" \
+  -d '{"initialNumbers":[0,1],"n":9}'
+
+# Fibonacci simple con parámetros URL
+curl "http://localhost:8080/fibonacci/simple?first=2&second=3&count=5"
+```
 
