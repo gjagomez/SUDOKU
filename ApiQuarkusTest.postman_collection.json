@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "77b450cf-8492-45cf-8fef-2112aaddbb4b",
+		"name": "ApiQuarkusTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3729480",
+		"_collection_link": "https://bold-space-266965.postman.co/workspace/Beesion~96fe9cdb-f633-48f7-8a73-294806c6f2ef/collection/3729480-77b450cf-8492-45cf-8fef-2112aaddbb4b?action=share&source=collection_link&creator=3729480"
+	},
+	"item": [
+		{
+			"name": "temperaturas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/temperaturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"temperaturas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/temperaturas/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"temperaturas",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "temperaturas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"minima\": 25,\r\n    \"maxima\": 32,\r\n    \"cuidad\": \"Mexico\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/temperaturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"temperaturas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "maxima",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/temperaturas/maxima",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"temperaturas",
+						"maxima"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,8 @@
+
+@subscription = 54585
+
+GET http://subscriptions-management-beesion-uat.apps.ocp01.iplan.com.ar/subscriptions/{{subscription}}/relationships?limit=20
+
+###
+
+GET http://subscriptions-management-beesion-uat.apps.ocp01.iplan.com.ar/subscriptions/{{subscription}}/owner-relationships?limit=20
